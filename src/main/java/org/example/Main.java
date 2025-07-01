@@ -1,7 +1,6 @@
 package org.example;
 import java.util.*;
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -13,51 +12,44 @@ public class Main {
         int age = s.nextInt();
 
         double price = 0;
+        boolean valid = true;
 
         if (age < 18) {
-            if (member_status.toLowerCase().equals("Regular")) {
+            if (member_status.equalsIgnoreCase("Regular")) {
                 price = 50;
-            }
-            else if (member_status.toLowerCase().equals("VIP")) {
+            } else if (member_status.equalsIgnoreCase("VIP")) {
                 price = 75;
-            }
-            else if (member_status.toLowerCase().equals("Premium")) {
+            } else if (member_status.equalsIgnoreCase("Premium")) {
                 price = 100;
+            } else {
+                valid = false;
             }
-            else {
-                System.out.println("Invalid Member Status");;
-            }
-        }
-        else if (age <= 64) {
+        } else if (age <= 64) {
             if (member_status.equalsIgnoreCase("Regular")) {
                 price = 100;
-            }
-            else if (member_status.equalsIgnoreCase("VIP")) {
+            } else if (member_status.equalsIgnoreCase("VIP")) {
                 price = 150;
-            }
-            else if (member_status.equalsIgnoreCase("Premium")) {
+            } else if (member_status.equalsIgnoreCase("Premium")) {
                 price = 200;
+            } else {
+                valid = false;
             }
-            else {
-                System.out.println("Invalid Member Status");;
-            }
-        }
-        else if (age > 64) {
-            if (member_status.equalsIgnoreCase("regular")) {
+        } else {
+            if (member_status.equalsIgnoreCase("Regular")) {
                 price = 75;
-            }
-            else if (member_status.equalsIgnoreCase("vip")) {
+            } else if (member_status.equalsIgnoreCase("VIP")) {
                 price = 112.5;
-            }
-            else if (member_status.equalsIgnoreCase("premium")) {
+            } else if (member_status.equalsIgnoreCase("Premium")) {
                 price = 150;
-            }
-            else {
-                System.out.println("Invalid Member Status");;
+            } else {
+                valid = false;
             }
         }
-        System.out.println("Price: $" + price);
 
-
+        if (valid) {
+            System.out.printf("Price: $%.2f%n", price);
+        } else {
+            System.out.println("Invalid membership status entered.");
+        }
     }
 }
